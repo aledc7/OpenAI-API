@@ -1,5 +1,6 @@
+![Gloouds](https://raw.githubusercontent.com/aledc7/OpenAI-API/main/resources/gld500x500.png)
+
 # OpenAI-API
-## Consumir API de OpenAI
 
 ### Este Documento describe como consumir la API de OpenAI
 
@@ -7,7 +8,7 @@
 __Requisitos para usar la API:__   
 
 - [x] [API Key](https://platform.openai.com/account/api-keys) de tu cuenta de OpenAI
-- [x] Haber registrado un medio de págo (Tarjeta de crédito)
+- [x] Haber registrado un [Medio de Pago](https://platform.openai.com/account/billing/payment-methods) en OpenAI Platform.   
 - [x] El uso de esta API conlleva un costo.
 
 Aquí encontraras la [Lista de precios](https://openai.com/pricing) actual.   
@@ -230,6 +231,11 @@ $response->toArray(); // ['created' => 1589478378, data => ['url' => 'https://oa
 ````
 _____________________________________________________________________________________________________________________
 _____________________________________________________________________________________________________________________
+# Pasos a seguir...  
+
+Dentro de la carpeta resources, hay un archivo project.zip con el proyecto funcionando,con todas estas pruebas, listo para usar, solo crear el .env   
+por el de ustedes.
+
 ```php
 ````
 _____________________________________________________________________________________________________________________
