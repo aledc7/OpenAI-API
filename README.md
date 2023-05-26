@@ -233,6 +233,12 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________
 # Pasos a seguir...  
 
+Si usas Composer, simplemente clona este proyecto e instala las dependencias:
+```
+composer install
+```
+
+Si no usas Composer:   
 Dentro de la carpeta resources, hay un archivo project.zip con el proyecto funcionando,con todas estas pruebas, listo para usar, solo crear el .env   
 por el de ustedes.
 _____________________________________________________________________________________________________________________   
