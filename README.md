@@ -70,7 +70,7 @@ $client = OpenAI::client($open_ai_key);
 En esta instancia tendremos nuestro cliente en la variable php $clien     
 
 
-De aqui en mas, ya se podrá interactuar de manera FULL con los 64 Modelos de Lenguaje que OpenAI pone a disposición.   
+De aqui en mas, ya se podrá interactuar de manera FULL con los [Modelos](https://platform.openai.com/docs/models) de Lenguaje que OpenAI pone a disposición.     
 _____________________________________________________________________________________________________________________
 
 # MODEL LIST
