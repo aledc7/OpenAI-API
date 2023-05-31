@@ -7,6 +7,7 @@
 
 __Requisitos para usar la API:__   
 
+- [x] Php 8.0 o superior   
 - [x] [API Key](https://platform.openai.com/account/api-keys) de tu cuenta de OpenAI
 - [x] Haber registrado un [Medio de Pago](https://platform.openai.com/account/billing/payment-methods) en OpenAI Platform.   
 - [x] El uso de esta API conlleva un costo.
