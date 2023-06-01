@@ -151,8 +151,15 @@ $response->toArray(); // ['id' => 'ft-AF1WoRqd3aJAHsqc9NY7iL8F', ...]
 
 
 _____________________________________________________________________________________________________________________
-
+FINE TUNE
+[Fine Tune](https://platform.openai.com/docs/guides/fine-tuning) se refiere a el proceso de ajustar los parámetros de un modelo   
+para que se ajuste mejor a los datos. Los parámetros son los valores numéricos que determinan cómo se comporta el modelo y   
+produce resultados. Por ejemplo, en un modelo de regresión lineal, los parámetros son la pendiente y la intersección de  
+la línea que mejor se ajusta a los puntos de datos.  
+_____________________________________________________________________________________________________________________   
+_____________________________________________________________________________________________________________________
 # MODEL LIST
+Se puede obtener la lista de todos los modelos de la siguiente manera:   
 ```php
 ################## RECUPERO LA LISTA DE MODELOS  ####################
 $response = $client->models()->list();
