@@ -8,9 +8,10 @@
 __Requisitos para usar la API:__   
 
 - [x] Php 8.0 o superior   
-- [x] [API Key](https://platform.openai.com/account/api-keys) de tu cuenta de OpenAI
-- [x] Haber registrado un [Medio de Pago](https://platform.openai.com/account/billing/payment-methods) en OpenAI Platform.   
-- [x] El uso de esta API conlleva un costo.
+- [x] Librería [openai-php client](https://github.com/openai-php/client)  
+- [x] [API Key de OpenAI](https://platform.openai.com/account/api-keys) de tu cuenta de OpenAI
+- [x] Haber registrado un [Medio de Pago en OpenAI](https://platform.openai.com/account/billing/payment-methods) en OpenAI Platform.   
+- [x] El uso de esta API conlleva un costo.  
 
 Aquí encontraras la [Lista de precios](https://openai.com/pricing) actual.   
 
@@ -72,7 +73,83 @@ $client = OpenAI::client($open_ai_key);
 En esta instancia tendremos nuestro cliente en la variable php $clien     
 
 
-De aqui en mas, ya se podrá interactuar de manera FULL con los [Modelos](https://platform.openai.com/docs/models) de Lenguaje que OpenAI pone a disposición.     
+De aqui en mas, ya se podrá interactuar de manera FULL con los [Modelos](https://platform.openai.com/docs/models) de Lenguaje que OpenAI pone a disposición.  
+_____________________________________________________________________________________________________________________  
+# Hacer una pregunta al chat  
+Esta sería la manera mas simplificada.   
+```php
+$yourApiKey = getenv('Tu_API-KEY_DE_OPENAI');
+$client = OpenAI::client($yourApiKey);
+
+$result = $client->completions()->create([
+    'model' => 'text-davinci-003',
+    'prompt' => 'Quisiera saber que son los kpi',
+]);
+
+echo $result['choices'][0]['text'];  
+```
+Esto devolería:
+```
+KPI es un acrónimo que se traduce al español como Indicador Clave de   
+Desempeño, y en inglés es conocido como Key Performance Indicator.  
+Los KPI son métricas cuantitativas que...    
+```
+_____________________________________________________________________________________________________________________
+## Establecer parámetros antes de hacer la pregunta   
+```php  
+$response = $client->completions()->create([
+    'model' => 'text-davinci-003',
+    'prompt' => 'Say this is a test',
+    'max_tokens' => 6,
+    'temperature' => 0
+]);
+
+$response->id; // 'cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7'
+$response->object; // 'text_completion'
+$response->created; // 1589478378
+$response->model; // 'text-davinci-003'
+
+foreach ($response->choices as $result) {
+    $result->text; // '\n\nThis is a test'
+    $result->index; // 0
+    $result->logprobs; // null
+    $result->finishReason; // 'length' or null
+}
+
+$response->usage->promptTokens; // 5,
+$response->usage->completionTokens; // 6,
+$response->usage->totalTokens; // 11
+
+$response->toArray(); // ['id' => 'cmpl-uqkvlQyYK7bGYrRHQ0eXlWi7', ...]
+```
+
+
+_____________________________________________________________________________________________________________________
+## Crea un trabajo que ajusta un modelo específico a partir de un conjunto de datos determinado.
+```php
+$response = $client->fineTunes()->create([
+    'training_file' => 'file-ajSREls59WBbvgSzJSVWxMCB',
+    'validation_file' => 'file-XjSREls59WBbvgSzJSVWxMCa',
+    'model' => 'curie',
+    'n_epochs' => 4,
+    'batch_size' => null,
+    'learning_rate_multiplier' => null,
+    'prompt_loss_weight' => 0.01,
+    'compute_classification_metrics' => false,
+    'classification_n_classes' => null,
+    'classification_positive_class' => null,
+    'classification_betas' => [],
+    'suffix' => null,
+]);
+
+$response->id; // 'ft-AF1WoRqd3aJAHsqc9NY7iL8F'
+$response->object; // 'fine-tune'
+// ...
+
+$response->toArray(); // ['id' => 'ft-AF1WoRqd3aJAHsqc9NY7iL8F', ...]
+```
+
+
 _____________________________________________________________________________________________________________________
 
 # MODEL LIST
