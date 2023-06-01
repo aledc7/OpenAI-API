@@ -32,7 +32,7 @@ Este párrafo es de 35 tokens.
 
 
 
-####################################################################################################################################################################
+___________________________________________________
 
 
 # Instalación   
@@ -60,13 +60,11 @@ Una vez tenemos instaladas las dos librerías necesarias, y nuestro archivo .env
 
 ## Instanciamos el cliente
 ```php
-#########################################################################################################################
 require_once __DIR__ . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 $open_ai_key = $_ENV['OPENAI_API_KEY']; // esto sale del archivo .env ,poner tu API KEY en la clave 'OPENAI_API_KEY' de tu .env
 $client = OpenAI::client($open_ai_key);  
-#########################################################################################################################
 ```
 
 
@@ -176,7 +174,6 @@ ________________________________________________________________________________
 _____________________________________________________________________________________________________________________
 # MODEL RETRIEVE
 ```php
-########################################################################################
 // Recupera una Instancia de Modelo y proporciona información básica sobre el Modelo, 
 // como el Propietario y los Permisos.
 $response = $client->models()->retrieve('text-davinci-003');
@@ -204,7 +201,6 @@ foreach ($response->permission as $result) {
 }
 
 $response->toArray(); // ['id' => 'text-davinci-003', ...]
-########################################################################################
 ````
 _____________________________________________________________________________________________________________________
 
